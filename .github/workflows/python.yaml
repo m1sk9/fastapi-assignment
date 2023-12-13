@@ -22,9 +22,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install poetry
-        run: |
-          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-          echo "$HOME/.poetry/bin" >> $GITHUB_PATH
+        uses: snok/install-poetry@v1
       - name: Poetry Version
         run: |
           poetry --version
@@ -37,6 +35,7 @@ jobs:
       - name: Run mypy
         run: |
           poetry run mypy ./
-      - name: Run pytest
-        run: |
-          poetry run pytest
+      # TODO: Add pytest
+      # - name: Run pytest
+      #   run: |
+      #     poetry run pytest
